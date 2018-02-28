@@ -4,13 +4,11 @@ import path from 'path'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
-//import favicon from 'serve-favicon';
 
 import { connection } from './src/config/database.js'
 var uri = process.env.MONGODB_URI || 'mongodb://localhost/contato-meta'
 connection.connect(uri)
 
-//import indexRouter from './src/routes/index'
 import contato from './src/routes/contato'
 
 
@@ -21,18 +19,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json({limit:1024102420, type:'application/json'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/public/assets', express.static('assets'));
-app.use('/public/images', express.static('images'));
-//app.use(favicon(__dirname + '/public/images/favicon.png'));
 
 //ROUTES
-//app.use('/', indexRouter);
 app.use('/contato', contato);
-
-//PAGINA INICIAL
-app.use((req, res, next) => {res.sendFile('./public/index.html', { root: __dirname  } )});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
