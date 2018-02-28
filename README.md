@@ -16,5 +16,5 @@ npm run start:dev
 ```
 Produção:
 ```sh
-npm run start:dev
+npm run start:prd
 ```
