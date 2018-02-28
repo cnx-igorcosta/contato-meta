@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./dist/app.js",
+    "build": "babel app -d dist",
     "start:dev": "nodemon ./app/app.js --exec babel-node",
-    "build": "babel app -d dist --ignore app/public",
     "start:prd": "npm run build && npm start"
   },
   "dependencies": {
